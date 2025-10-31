@@ -1,0 +1,47 @@
+# Python virtual environment
+venv/
+env/
+ENV/
+.venv/
+__pycache__/
+
+# Python cache and compiled files
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+*.whl
+
+# PyCharm / IntelliJ
+.idea/
+
+# VSCode
+.vscode/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Model files (uncomment if models are too large for git)
+# model/*.h5
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS
+.DS_Store
+*.swp
+*.swo
+*~
