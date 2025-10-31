@@ -1,0 +1,510 @@
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+.header {
+  background: #ffffff;
+  padding: 16px 24px;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #212529;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.header-actions {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: #212529;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  background: #f8f9fa;
+  transform: scale(1.1);
+}
+
+.github-link {
+  color: #212529;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.github-link:hover {
+  background: #f8f9fa;
+  color: #000000;
+  transform: scale(1.1);
+}
+
+.github-link svg {
+  width: 24px;
+  height: 24px;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.main-content {
+  display: flex;
+  gap: 30px;
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+}
+
+.left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.image-section {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-placeholder {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #dee2e6;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  background: #f8f9fa;
+  transition: all 0.3s;
+}
+
+.upload-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.image-section.dragging .upload-icon {
+  color: #212529;
+  transform: scale(1.1);
+}
+
+.upload-hint {
+  font-size: 0.875rem;
+  margin-top: 8px;
+  opacity: 0.7;
+}
+
+.image-section.dragging .upload-placeholder {
+  border-color: #212529;
+  background: #e9ecef;
+  border-width: 3px;
+  transform: scale(1.02);
+}
+
+.image-section.dragging .upload-placeholder p {
+  color: #212529;
+  font-weight: 600;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.file-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.file-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #212529;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.file-label:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.file-label:active {
+  transform: translateY(0);
+}
+
+.file-label-text {
+  display: inline-block;
+}
+
+.file-label-icon {
+  display: inline-block;
+  font-size: 1.1rem;
+}
+
+
+.btn {
+  width: 100%;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: #212529;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #d0d0d0;
+}
+
+.error-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fee;
+  border-radius: 8px;
+  color: #c33;
+  text-align: center;
+}
+
+.result-section {
+  margin-top: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.result-section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  color: #333;
+  flex-shrink: 0;
+}
+
+.result-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid #e9ecef;
+  flex-shrink: 0;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-weight: 600;
+  color: #666;
+}
+
+.value {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Dark Mode Styles */
+.app.dark-mode {
+  background: #0d1117;
+}
+
+.app.dark-mode .header {
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.app.dark-mode .header-title {
+  color: #c9d1d9;
+}
+
+.app.dark-mode .theme-toggle {
+  color: #c9d1d9;
+}
+
+.app.dark-mode .theme-toggle:hover {
+  background: #21262d;
+  color: #f0f6fc;
+}
+
+.app.dark-mode .github-link {
+  color: #c9d1d9;
+}
+
+.app.dark-mode .github-link:hover {
+  background: #21262d;
+  color: #f0f6fc;
+}
+
+.app.dark-mode .main-content {
+  background: #161b22;
+  border: 1px solid #30363d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.app.dark-mode .image-preview {
+  background: #0d1117;
+  border: 1px solid #30363d;
+}
+
+.app.dark-mode .upload-placeholder {
+  border: 2px dashed #30363d;
+  background: #0d1117;
+  color: #8b949e;
+}
+
+.app.dark-mode .upload-icon {
+  color: #8b949e;
+}
+
+.app.dark-mode .image-section.dragging .upload-placeholder {
+  border-color: #58a6ff;
+  background: #161b22;
+}
+
+.app.dark-mode .image-section.dragging .upload-icon {
+  color: #58a6ff;
+}
+
+.app.dark-mode .image-section.dragging .upload-placeholder p {
+  color: #58a6ff;
+}
+
+.app.dark-mode .file-label {
+  background: #21262d;
+  color: #c9d1d9;
+}
+
+.app.dark-mode .file-label:hover {
+  background: #30363d;
+  color: #f0f6fc;
+}
+
+.app.dark-mode .btn-primary {
+  background: #21262d;
+  color: #c9d1d9;
+}
+
+.app.dark-mode .btn-primary:hover:not(:disabled) {
+  background: #30363d;
+  color: #f0f6fc;
+}
+
+.app.dark-mode .btn-secondary {
+  background: #21262d;
+  color: #c9d1d9;
+}
+
+.app.dark-mode .btn-secondary:hover {
+  background: #30363d;
+  color: #f0f6fc;
+}
+
+.app.dark-mode .error-message {
+  background: #3d2121;
+  color: #f85149;
+}
+
+.app.dark-mode .result-section h2 {
+  color: #c9d1d9;
+}
+
+.app.dark-mode .result-card {
+  background: #0d1117;
+  border: 1px solid #30363d;
+}
+
+.app.dark-mode .label {
+  color: #8b949e;
+}
+
+.app.dark-mode .value {
+  color: #c9d1d9;
+}
+
+.app.dark-mode .file-input {
+  color: #c9d1d9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .header-title {
+    font-size: 1.25rem;
+  }
+
+  .header-actions {
+    right: 16px;
+    gap: 8px;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .github-link {
+    width: 36px;
+    height: 36px;
+  }
+
+  .github-link svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .main-content {
+    padding: 30px;
+  }
+}
