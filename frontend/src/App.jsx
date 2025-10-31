@@ -70,7 +70,8 @@ function App() {
     formData.append('file', selectedFile);
 
     try {
-      const response = await axios.post('http://127.0.0.1:5000/predict', formData);
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+      const response = await axios.post(`${apiUrl}/predict`, formData);
 
       setResult(response.data);
     } catch (err) {

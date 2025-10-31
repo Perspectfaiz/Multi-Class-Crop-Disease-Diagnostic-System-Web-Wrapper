@@ -1,13 +1,26 @@
+# conda activate tfenv 
+# curl -X POST -F "file=@/Users/perspectfaiz/Desktop/Apple.jpg" http://127.0.0.1:5000/predict
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import tensorflow as tf
 import numpy as np
 import cv2
+import os
+from dotenv import load_dotenv
+
+# -----------------------------
+# Load environment variables
+# -----------------------------
+load_dotenv()
 
 # -----------------------------
 # Configuration
 # -----------------------------
 MODEL_PATH = "model/model.h5"
+FLASK_HOST = os.getenv('FLASK_HOST', '127.0.0.1')
+FLASK_PORT = int(os.getenv('FLASK_PORT', 5000))
+FLASK_DEBUG = os.getenv('FLASK_DEBUG', 'True').lower() == 'true'
 
 # -----------------------------
 # Initialize Flask app
@@ -124,4 +137,5 @@ def predict():
 # Main Entry
 # -----------------------------
 if __name__ == '__main__':
-    app.run(debug=True)
+    print(f"🚀 Starting Flask server on {FLASK_HOST}:{FLASK_PORT} (debug={FLASK_DEBUG})")
+    app.run(host=FLASK_HOST, port=FLASK_PORT, debug=FLASK_DEBUG)
